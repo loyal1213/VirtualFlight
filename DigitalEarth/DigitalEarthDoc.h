@@ -20,11 +20,11 @@ public:
 
 // 重写
 public:
-	virtual BOOL OnNewDocument();
+//	virtual BOOL OnNewDocument();
 	virtual void Serialize(CArchive& ar);
 #ifdef SHARED_HANDLERS
-	virtual void InitializeSearchContent();
-	virtual void OnDrawThumbnail(CDC& dc, LPRECT lprcBounds);
+//	virtual void InitializeSearchContent();
+//	virtual void OnDrawThumbnail(CDC& dc, LPRECT lprcBounds);
 #endif // SHARED_HANDLERS
 
 // 实现
@@ -36,13 +36,17 @@ public:
 #endif
 
 protected:
-
+	CString m_csFileName;
 // 生成的消息映射函数
 protected:
 	DECLARE_MESSAGE_MAP()
 
 #ifdef SHARED_HANDLERS
 	// 用于为搜索处理程序设置搜索内容的 Helper 函数
-	void SetSearchContent(const CString& value);
+//	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
+public:
+	virtual BOOL OnOpenDocument(LPCTSTR lpszPathName);
+public:
+	CString GetFileName() const;
 };

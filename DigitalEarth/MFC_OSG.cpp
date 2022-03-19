@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "MFC_OSG.h"
-
-
+#include <osgGA/FlightManipulator>
+#include <osgGA/DriveManipulator>
+#include <osgGA/TerrainManipulator>
+#include <osgGA/StateSetManipulator>
 
 cOSG::cOSG(HWND hWnd) :
     m_hWnd(hWnd)
@@ -37,7 +39,10 @@ void cOSG::InitManipulators(void)
     keyswitchManipulator = new osgGA::KeySwitchMatrixManipulator;
 
     // Add our trackball manipulator to the switcher
-    keyswitchManipulator->addMatrixManipulator('1', "Trackball", trackball.get());
+	keyswitchManipulator->addMatrixManipulator('1', "Trackball", trackball.get());
+	keyswitchManipulator->addMatrixManipulator('2', "Flight", new osgGA::FlightManipulator());
+	keyswitchManipulator->addMatrixManipulator('3', "Drive", new osgGA::DriveManipulator());
+	keyswitchManipulator->addMatrixManipulator('4', "Terrain", new osgGA::TerrainManipulator());
 
     // Init the switcher to the first manipulator (in this case the only manipulator)
     keyswitchManipulator->selectMatrixManipulator(0);  // Zero based index Value
@@ -60,6 +65,9 @@ void cOSG::InitSceneGraph(void)
 
     // Add the model to the scene
     mRoot->addChild(mModel.get());
+    mRoot->addChild(osgDB::readNodeFile(_T("cow.osg")));
+    mRoot->addChild(osgDB::readNodeFile(_T("dumptruck.osg")));
+    mRoot->addChild(osgDB::readNodeFile(_T("robot.osg")));
 }
 
 void cOSG::InitCameraConfig(void)
@@ -72,6 +80,19 @@ void cOSG::InitCameraConfig(void)
 
     // Add a Stats Handler to the viewer
     mViewer->addEventHandler(new osgViewer::StatsHandler);
+
+	//添加状态事件
+    mViewer->addEventHandler(new osgGA::StateSetManipulator(mViewer->getCamera()->getOrCreateStateSet()));
+    mViewer->addEventHandler(new osgViewer::ThreadingHandler);
+	//窗口大小变化事件
+    mViewer->addEventHandler(new osgViewer::WindowSizeHandler);
+	//添加一些常用状态设置
+    mViewer->addEventHandler(new osgViewer::StatsHandler);
+    // mViewer->addEventHandler(new osgViewer::HelpHandler(arguments.getApplicationUsage()));
+    mViewer->addEventHandler(new osgViewer::RecordCameraPathHandler);
+
+
+
 
     // Get the current window size
     ::GetWindowRect(m_hWnd, &rect);

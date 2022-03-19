@@ -23,7 +23,7 @@
 BEGIN_MESSAGE_MAP(CDigitalEarthApp, CWinAppEx)
 	ON_COMMAND(ID_APP_ABOUT, &CDigitalEarthApp::OnAppAbout)
 	// 基于文件的标准文档命令
-	ON_COMMAND(ID_FILE_NEW, &CWinAppEx::OnFileNew)
+	// ON_COMMAND(ID_FILE_NEW, &CWinAppEx::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, &CWinAppEx::OnFileOpen)
 END_MESSAGE_MAP()
 
@@ -135,6 +135,9 @@ BOOL CDigitalEarthApp::InitInstance()
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
 
+	// Don't display a new MDI child window during startup
+	if (cmdInfo.m_nShellCommand == CCommandLineInfo::FileNew)
+		cmdInfo.m_nShellCommand = CCommandLineInfo::FileNothing;
 
 
 	// 调度在命令行中指定的命令。  如果
