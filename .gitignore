@@ -1,32 +1,7 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+target          //忽略这个target目录
+angular.json    //忽略这个angular.json文件
+log/*           //忽略log下的所有文件
+css/*.css       //忽略css目录下的.css文件
+x86/*
+x64/*
+Debug/*
