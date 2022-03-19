@@ -5,3 +5,4 @@ css/*.css       //忽略css目录下的.css文件
 x86/*
 x64/*
 Debug/*
+.vs/*
