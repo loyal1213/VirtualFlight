@@ -6,3 +6,5 @@ x86/*
 x64/*
 Debug/*
 .vs/*
+MFC_OSG_MDI/x64/*
+DigitalEarth/x64/*
