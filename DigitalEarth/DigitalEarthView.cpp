@@ -34,6 +34,7 @@ END_MESSAGE_MAP()
 // CDigitalEarthView 构造/析构
 
 CDigitalEarthView::CDigitalEarthView() noexcept
+	:p_osgearth_(0L)
 {
 	// TODO: 在此处添加构造代码
 
@@ -108,7 +109,7 @@ int CDigitalEarthView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	// Now that the window is created setup OSG
 	mOSG = new cOSG(m_hWnd);
-
+	p_osgearth_ = new COSGObject(m_hWnd);
 	return 0;
 }
 
@@ -117,6 +118,11 @@ void CDigitalEarthView::OnDestroy()
 {
 	delete mThreadHandle;
 	if (mOSG != 0) delete mOSG;
+
+	if (p_osgearth_ != 0) {
+		delete p_osgearth_;
+		p_osgearth_ = nullptr;
+	}
 
 	//WaitForSingleObject(mThreadHandle, 1000);
 
@@ -140,17 +146,31 @@ void CDigitalEarthView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	CView::OnKeyDown(nChar, nRepCnt, nFlags);
 }
 
+#include <regex>
+#include <string>
+
+#include <iostream>
+using namespace std;
 
 void CDigitalEarthView::OnInitialUpdate()
 {
 	CView::OnInitialUpdate();
 	CString csFileName = this->GetDocument()->GetFileName();
 
-	// Init the osg class
-	mOSG->InitOSG(csFileName.GetString());
-
+	CString suffix = csFileName.Right(csFileName.GetLength() - csFileName.ReverseFind('.'));
+	if (suffix.Compare(_T(".osg")) == 0) {
+		// Init the osg class
+		mOSG->InitOSG(csFileName.GetString());
+		// mThreadHandle = new CRenderingThread(mOSG);
+		// mThreadHandle->start();
+	}
+	else {
+		p_osgearth_->InitOSG(csFileName.GetString());
+		mThreadHandle = new CRenderingThread(p_osgearth_);
+		mThreadHandle->start();
+	}
 	// Start the thread to do OSG Rendering
 	//mThreadHandle = (HANDLE)_beginthread(&cOSG::Render, 0, mOSG); 
-	mThreadHandle = new CRenderingThread(mOSG);
-	mThreadHandle->start();
+	
+	
 }

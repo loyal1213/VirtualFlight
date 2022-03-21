@@ -10,7 +10,7 @@
 #include <osgDB/ReadFile>
 #include <osgUtil/Optimizer>
 #include <string>
-
+#include "COSGObject.h"
 class cOSG
 {
 public:
@@ -40,15 +40,16 @@ private:
 	osg::ref_ptr<osgGA::KeySwitchMatrixManipulator> keyswitchManipulator;
 };
 
-class CRenderingThread : public OpenThreads::Thread
+class CRenderingThread: public OpenThreads::Thread
 {
 public:
-	CRenderingThread(cOSG* ptr);
+	CRenderingThread(COSGObject* ptr);
 	virtual ~CRenderingThread();
 
 	virtual void run();
 
 protected:
-	cOSG* _ptr;
+	COSGObject* _ptr;
 	bool _done;
 };
+

@@ -210,6 +210,7 @@ osgEarthd.lib;%(AdditionalDependencies)</AdditionalDependencies>
   <ItemGroup>
     <ClInclude Include="ChildFrm.h" />
     <ClInclude Include="ClassView.h" />
+    <ClInclude Include="COSGObject.h" />
     <ClInclude Include="DigitalEarth.h" />
     <ClInclude Include="DigitalEarthDoc.h" />
     <ClInclude Include="DigitalEarthView.h" />
@@ -227,6 +228,7 @@ osgEarthd.lib;%(AdditionalDependencies)</AdditionalDependencies>
   <ItemGroup>
     <ClCompile Include="ChildFrm.cpp" />
     <ClCompile Include="ClassView.cpp" />
+    <ClCompile Include="COSGObject.cpp" />
     <ClCompile Include="DigitalEarth.cpp" />
     <ClCompile Include="DigitalEarthDoc.cpp" />
     <ClCompile Include="DigitalEarthView.cpp" />

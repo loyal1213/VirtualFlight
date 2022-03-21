@@ -1,4 +1,14 @@
-﻿  MFC_OSG_MDI.cpp
+﻿  pch.cpp
+  ChildFrm.cpp
+  ClassView.cpp
+  FileView.cpp
+  MainFrm.cpp
+  MFC_OSG.cpp
+  MFC_OSG_MDI.cpp
+  MFC_OSG_MDIDoc.cpp
   MFC_OSG_MDIView.cpp
+  OutputWnd.cpp
+  PropertiesWnd.cpp
+  ViewTree.cpp
   正在生成代码...
-  MFC_OSG_MDI.vcxproj -> G:\the_way_programmer_learn\vs_project\vs_2019\VirtualFlight\Debug\MFC_OSG_MDI.exe
+  MFC_OSG_MDI.vcxproj -> G:\the_way_coder_learn\vs_project\Visual Studio 2019\VirtualFlight\Debug\MFC_OSG_MDI.exe

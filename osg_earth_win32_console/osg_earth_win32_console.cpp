@@ -122,7 +122,7 @@ int main(int argc, char** argv)
 	// Start with a basemap imagery layer; we'll be using the GDAL driver
 	// to load a local GeoTIFF file:
 	GDALImageLayer* basemap = new GDALImageLayer();
-	basemap->setURL("../data/world.tif");
+	basemap->setURL("../x86/oe32-src/data/world.tif");
 	map->addLayer(basemap);
 
 	// Next we add a layer to provide the feature data.
@@ -141,7 +141,7 @@ int main(int argc, char** argv)
 	}
 	else
 	{
-		features->setURL("../data/world.shp");
+		features->setURL("../x86/oe32-src/data/world.shp");
 	}
 	map->addLayer(features);
 

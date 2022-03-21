@@ -60,6 +60,9 @@
     <ClInclude Include="MFC_OSG.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="COSGObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DigitalEarth.cpp">
@@ -96,6 +99,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MFC_OSG.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="COSGObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

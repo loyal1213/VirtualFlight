@@ -5,26 +5,27 @@
 #pragma once
 
 #include "MFC_OSG.h"
+#include "COSGObject.h"
 class CDigitalEarthView : public CView
 {
 protected: // 仅从序列化创建
 	CDigitalEarthView() noexcept;
 	DECLARE_DYNCREATE(CDigitalEarthView)
 
-// 特性
+	// 特性
 public:
 	CDigitalEarthDoc* GetDocument() const;
 
-// 操作
+	// 操作
 public:
 
-// 重写
+	// 重写
 public:
 	virtual void OnDraw(CDC* pDC);  // 重写以绘制该视图
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 protected:
 
-// 实现
+	// 实现
 public:
 	virtual ~CDigitalEarthView();
 #ifdef _DEBUG
@@ -34,11 +35,12 @@ public:
 
 protected:
 	cOSG* mOSG;
+	COSGObject* p_osgearth_;
 	CRenderingThread* mThreadHandle;
 
-// 生成的消息映射函数
+	// 生成的消息映射函数
 protected:
-//	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
+	//	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
 	DECLARE_MESSAGE_MAP()
 public:
@@ -51,6 +53,8 @@ public:
 
 #ifndef _DEBUG  // DigitalEarthView.cpp 中的调试版本
 inline CDigitalEarthDoc* CDigitalEarthView::GetDocument() const
-   { return reinterpret_cast<CDigitalEarthDoc*>(m_pDocument); }
+{
+	return reinterpret_cast<CDigitalEarthDoc*>(m_pDocument);
+}
 #endif
 
