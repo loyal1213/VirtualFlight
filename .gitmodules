@@ -1,0 +1,3 @@
+[submodule "osgearth"]
+	path = osgearth
+	url = git@github.com:loyal1213/osgearth.git
