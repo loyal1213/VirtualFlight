@@ -1,0 +1,15 @@
+--30m精度高程获取
+  -下载地址一: http://www.gdem.aster.ersdac.or.jp/      aster_gdem
+  -下载地址二: http://datamirror.csdb.cn/index.jsp     
+     -两个数据源都一样，第二个国内专家处理过     国际科学数据服务平台
+     -http://resolve.pid21.cn/CSTR:16666.11.nbsdc.37dooclw
+      推荐软件：global-mapper  erdas
+--笔者推荐使用的高程获取
+  -下载地址: http://download.osgeo.org/ossim/data/elevation/
+
+  高精度纹理的获取
+  GEScreen
+  - Already history, "no longer updated, not recommended to use 
+  稻歌 - If there is no data of this layer, can not use the previous layer of automatic overlay 
+  笔者推荐: AKai day software map downloader
+  http://www.arceyes.com/          地球原始高程TIF数据
